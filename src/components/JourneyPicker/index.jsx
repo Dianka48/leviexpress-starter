@@ -37,7 +37,12 @@ export const JourneyPicker = ({ onJourneyChange }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('from', fromCity, 'to', toCity, 'date', date);
+    // console.log('from', fromCity, 'to', toCity, 'date', date);
+    fetch(
+      `https://leviexpress-backend.herokuapp.com/api/journey?fromCity=${fromCity}&toCity=${toCity}&date=${date}`,
+    )
+      .then((response) => response.json())
+      .then((data) => onJourneyChange(data.data));
   };
 
   useEffect(() => {
@@ -83,7 +88,11 @@ export const JourneyPicker = ({ onJourneyChange }) => {
             </select>
           </label>
           <div className="journey-picker__controls">
-            <button className="btn" type="submit">
+            <button
+              disabled={toCity && fromCity && date ? false : true}
+              className="btn"
+              type="submit"
+            >
               Vyhledat spoj
             </button>
           </div>
