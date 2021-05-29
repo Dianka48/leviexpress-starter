@@ -12,7 +12,7 @@ export const Home = () => {
   return (
     <main>
       <JourneyPicker onJourneyChange={handleJourneyChange} />
-      {journey && <p>Nalezeno spojeni s {journey.journeyId}</p>}
+      {journey && <JourneyDetail journey={journey} />}
     </main>
   );
 };
