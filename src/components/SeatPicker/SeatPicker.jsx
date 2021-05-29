@@ -14,7 +14,6 @@ const SeatPicker = ({ seats, journeyId }) => {
   const history = useHistory();
 
   const handleBuy = () => {
-    console.log('funguju');
     fetch('https://leviexpress-backend.herokuapp.com/api/reserve', {
       method: 'POST',
       headers: {
